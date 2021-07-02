@@ -43,7 +43,7 @@ pipeline{
             steps {
                 script {
 
-            def NexusRepo = Version.endsWith("SNAPSHOT") ? "demoapp-SNAPSHOT" : "demoapp-RELEASE"
+                def NexusRepo = Version.endsWith("SNAPSHOT") ? "demoapp-SNAPSHOT" : "demoapp-RELEASE"
                 nexusArtifactUploader artifacts: 
                 [[artifactId: "${ArtifactId}",
                 classifier: '',
