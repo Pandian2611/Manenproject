@@ -28,7 +28,7 @@ pipeline{
             }
         }
 
-   /*     // Stage3 : Publish the artifacts to Nexus
+      // Stage3 : Publish the artifacts to Nexus
         stage ('Publish to Nexus'){
             steps {
                 script {
@@ -36,21 +36,22 @@ pipeline{
              //   def NexusRepo = Version.endsWith("SNAPSHOT") ? "VinaysDevOpsLab-SNAPSHOT" : "VinaysDevOpsLab-RELEASE"
                 nexusArtifactUploader artifacts: 
                 [[artifactId: 'demoapp',
-                classifier: '', 
-                file: 'target/demoapp-0.0.4-SNAPSHOT.war',
+                classifier: '',
+                file: 'target/demoapp-0.0.2-SNAPSHOT.war',
                 type: 'war']],
-                credentialsId: 'bdf5f2e0-1307-4b21-91d1-836330a3f28c',
+                credentialsId: '25e1c680-a654-445b-9675-f034d25c10dc',
                 groupId: 'com.mavenproject',
-                nexusUrl: 'localhost:8081', nexusVersion: 'nexus3',
+                nexusUrl: 'localhost:8081',
+                nexusVersion: 'nexus3',
                 protocol: 'http',
-                repository: 'Demoapp-SNAPSHOT',
-                version: '0.0.4-SNAPSHOT'
-               }
+                repository: 'demoapp-SNAPSHOT',
+                version: '0.0.2-SNAPSHOT'
+                }
             }
         } 
 
         // Stage 3 : Print some information
-       
+      /* 
        stage ('Print Environment variables'){
                     steps {
                         echo "Artifact ID is '${ArtifactId}'"
