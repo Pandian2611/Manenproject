@@ -43,19 +43,18 @@ pipeline{
             steps {
                 script {
 
-           //  def NexusRepo = Version.endsWith("SNAPSHOT") ? "demoapp-SNAPSHOT" : "demoapp-RELEASE"
+            def NexusRepo = Version.endsWith("SNAPSHOT") ? "demoapp-SNAPSHOT" : "demoapp-RELEASE"
                 nexusArtifactUploader artifacts: 
-                [[artifactId: 'demoapp',
+                [[artifactId: "${ArtifactId}",
                 classifier: '',
                 file: 'target/demoapp-0.0.3-SNAPSHOT.war',
-                type: 'war']],
                 credentialsId: '25e1c680-a654-445b-9675-f034d25c10dc',
-                groupId: 'com.mavenproject',
+                groupId: "${GroupId}",
                 nexusUrl: 'localhost:8081',
                 nexusVersion: 'nexus3',
                 protocol: 'http',
-                repository: 'demoapp-SNAPSHOT',
-                version: '0.0.3-SNAPSHOT'
+                repository: "${NexusRepo}",
+                version: "${Version}"
                 }
             }
         } 
