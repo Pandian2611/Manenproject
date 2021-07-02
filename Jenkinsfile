@@ -15,7 +15,7 @@ pipeline{
         // Specify various stage with in stages
 
         // stage 1. Build
-        stage ('Build'){
+        /* stage ('Build'){
             steps {
                 sh 'mvn clean install package'
             }
@@ -27,8 +27,17 @@ pipeline{
                 echo ' testing......'
 
             }
-        }
+        } */
 
+        stage ('Sonarqube Analysis'){
+            steps {
+                echo ' Source Code Published in Sonarqube for Static Code Analysis'
+                withSonarQubeEnv('sonarqube') {// You can override the credential to be used
+                    sh 'mvn clean package sonar:sonar'
+    }
+
+            }
+        }
       // Stage3 : Publish the artifacts to Nexus
         stage ('Publish to Nexus'){
             steps {
