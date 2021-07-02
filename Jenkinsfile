@@ -47,7 +47,7 @@ pipeline{
                 nexusArtifactUploader artifacts: 
                 [[artifactId: 'demoapp',
                 classifier: '',
-                file: 'target/demoapp-0.0.2-SNAPSHOT.war',
+                file: 'target/demoapp-0.0.3-SNAPSHOT.war',
                 type: 'war']],
                 credentialsId: '25e1c680-a654-445b-9675-f034d25c10dc',
                 groupId: 'com.mavenproject',
@@ -55,7 +55,7 @@ pipeline{
                 nexusVersion: 'nexus3',
                 protocol: 'http',
                 repository: 'demoapp-SNAPSHOT',
-                version: '0.0.2-SNAPSHOT'
+                version: '0.0.3-SNAPSHOT'
                 }
             }
         } 
