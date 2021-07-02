@@ -3,13 +3,14 @@ pipeline{
     agent any
     tools {
         maven 'maven'
-    } /*
+    } 
+    // After Installing pipeline utility in jenkins
     environment{
        ArtifactId = readMavenPom().getArtifactId()
        Version = readMavenPom().getVersion()
        Name = readMavenPom().getName()
        GroupId = readMavenPom().getGroupId()
-    } */
+    } 
     stages {
         // Specify various stage with in stages
 
@@ -33,7 +34,7 @@ pipeline{
             steps {
                 script {
 
-             //   def NexusRepo = Version.endsWith("SNAPSHOT") ? "VinaysDevOpsLab-SNAPSHOT" : "VinaysDevOpsLab-RELEASE"
+           //  def NexusRepo = Version.endsWith("SNAPSHOT") ? "demoapp-SNAPSHOT" : "demoapp-RELEASE"
                 nexusArtifactUploader artifacts: 
                 [[artifactId: 'demoapp',
                 classifier: '',
@@ -50,8 +51,8 @@ pipeline{
             }
         } 
 
-        // Stage 3 : Print some information
-      /* 
+        // Stage 4: Print some information
+      
        stage ('Print Environment variables'){
                     steps {
                         echo "Artifact ID is '${ArtifactId}'"
@@ -62,7 +63,7 @@ pipeline{
                 }
 
         // Stage 4 : Deploying the build artifact to Apache Tomcat
-        stage ('Deploy to Tomcat'){
+    /*    stage ('Deploy to Tomcat'){
             steps {
                 echo "Deploying ...."
                 sshPublisher(publishers: 
