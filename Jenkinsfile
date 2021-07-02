@@ -48,6 +48,7 @@ pipeline{
                 [[artifactId: "${ArtifactId}",
                 classifier: '',
                 file: "target/${ArtifactId}-${Version}.war",
+                type: 'war']],
                 credentialsId: '25e1c680-a654-445b-9675-f034d25c10dc',
                 groupId: "${GroupId}",
                 nexusUrl: 'localhost:8081',
